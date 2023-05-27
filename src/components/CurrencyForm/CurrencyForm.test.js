@@ -29,7 +29,7 @@ describe("Component CurrencyForm", () => {
       const selectSetTo = screen.getByTestId("setTo")
 
       // set test values to fields
-      userEvent.type(inputAmount, `${testObj.amount}`)
+      userEvent.type(inputAmount, testObj.amount)
       userEvent.selectOptions(selectSetFrom, testObj.from)
       userEvent.selectOptions(selectSetTo, testObj.to)
 
