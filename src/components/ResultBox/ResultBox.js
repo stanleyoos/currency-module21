@@ -18,9 +18,17 @@ const ResultBox = ({ from, to, amount }) => {
   )
 
   return (
-    <div className={styles.result} data-testid="resultBoxDiv">
-      {formattedAmount} = {convertedAmount}
-    </div>
+    <>
+      {amount > 0 ? (
+        <div className={styles.result} data-testid="resultBoxDiv">
+          {formattedAmount} = {convertedAmount}
+        </div>
+      ) : (
+        <div data-testid="wrongValueDiv" className={styles.wrongValue}>
+          Wrong value...
+        </div>
+      )}
+    </>
   )
 }
 

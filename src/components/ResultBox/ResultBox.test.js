@@ -91,4 +91,26 @@ describe("Compoment ResultBox", () => {
       cleanup()
     }
   })
+  it("should return div with wrong value message when input is negative", () => {
+    const testCases = [
+      { amount: "-100", from: "USD", to: "PLN" },
+      { amount: "-1200", from: "PLN", to: "PLN" },
+      { amount: "-120", from: "USD", to: "USD" },
+      { amount: "-550", from: "PLN", to: "USD" },
+      { amount: "-11", from: "USD", to: "PLN" },
+    ]
+
+    for (const testCase of testCases) {
+      render(
+        <ResultBox
+          from={testCase.from}
+          to={testCase.to}
+          amount={Number(testCase.amount)}
+        />
+      )
+      const resultBoxDiv = screen.getByTestId("wrongValueDiv")
+      expect(resultBoxDiv).toHaveTextContent("Wrong value...")
+      cleanup()
+    }
+  })
 })
